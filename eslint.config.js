@@ -27,6 +27,7 @@ export default [
       "react-hooks/rules-of-hooks": "error",
       "react-hooks/exhaustive-deps": "warn",
       "react/react-in-jsx-scope": "off",
+      "no-unused-vars": "warn",
       ...prettier.rules,
     },
     settings: {
