@@ -50,6 +50,7 @@ const Pause = ({ size = 21, color = "#C6C6C6", strokeWidth = 2, ...props }) => (
     viewBox="0 0 21 23"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M13.875 18.8125V4.1875C13.875 3.66476 13.875 3.40344 13.9182 3.1861C14.0958 2.29354 14.793 1.59577 15.6855 1.41823C15.9029 1.375 16.1648 1.375 16.6875 1.375C17.2102 1.375 17.4716 1.375 17.689 1.41823C18.5815 1.59577 19.2796 2.29354 19.4572 3.1861C19.5 3.40153 19.5 3.66016 19.5 4.17374V4.1875V18.8125V18.8263C19.5 19.3398 19.5 19.5985 19.4572 19.814C19.2796 20.7065 18.5815 21.4042 17.689 21.5817C17.4716 21.625 17.2097 21.625 16.687 21.625C16.1643 21.625 15.9029 21.625 15.6855 21.5817C14.793 21.4042 14.0958 20.7065 13.9182 19.814C13.875 19.5966 13.875 19.3352 13.875 18.8125Z"
@@ -76,6 +77,7 @@ const Volume = ({ size = 24, color = "white", strokeWidth = 1.5, ...props }) => 
     viewBox="0 0 24 24"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M2 9.99997V14C2 16 3 17 5 17H6.43C6.8 17 7.17 17.11 7.49 17.3L10.41 19.13C12.93 20.71 15 19.56 15 16.59V7.40997C15 4.42997 12.93 3.28997 10.41 4.86997L7.49 6.69997C7.17 6.88997 6.8 6.99997 6.43 6.99997H5C3 6.99997 2 7.99997 2 9.99997Z"
@@ -106,6 +108,7 @@ const Music = ({ size = 22, color = "#878787", strokeWidth = 1.5, ...props }) =>
     viewBox="0 0 22 22"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M5.75673 20.1667C7.33626 20.1667 8.61673 18.8862 8.61673 17.3067C8.61673 15.7271 7.33626 14.4467 5.75673 14.4467C4.17719 14.4467 2.89673 15.7271 2.89673 17.3067C2.89673 18.8862 4.17719 20.1667 5.75673 20.1667Z"
@@ -138,13 +141,14 @@ const Music = ({ size = 22, color = "#878787", strokeWidth = 1.5, ...props }) =>
   </svg>
 );
 
-const ArrowRight = ({ size = 9, color = "#878B92", strokeWidth = 2, ...props }) => {
+const ArrowRight = ({ size = 9, color = "#878B92", strokeWidth = 2, ...props }) => (
   <svg
     width={size}
     height={Math.round((size * 16) / 9)}
     viewBox="0 0 9 16"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M8 15L1 8L8 1"
@@ -153,20 +157,21 @@ const ArrowRight = ({ size = 9, color = "#878B92", strokeWidth = 2, ...props }) 
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>;
-};
+  </svg>
+);
 
 const ArrowLeft = styled(ArrowRight)`
   transform: rotate(180deg);
 `;
 
-const Heart = ({ size = 29, color = "white", strokeWidth = 2, ...props }) => {
+const Heart = ({ size = 29, color = "white", strokeWidth = 2, ...props }) => (
   <svg
     width={size}
     height={Math.round((size * 26) / 29)}
     viewBox="0 0 29 26"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M14.125 5.59999C11.2083 -1.24607 1 -0.516902 1 8.23314C1 16.9832 14.125 24.2748 14.125 24.2748C14.125 24.2748 27.25 16.9832 27.25 8.23314C27.25 -0.516902 17.0417 -1.24607 14.125 5.59999Z"
@@ -175,23 +180,24 @@ const Heart = ({ size = 29, color = "white", strokeWidth = 2, ...props }) => {
       strokeLinecap="round"
       strokeLinejoin="round"
     />
-  </svg>;
-};
+  </svg>
+);
 
-const Search = ({ size = 20, color = "white", ...props }) => {
+const Search = ({ size = 20, color = "white", ...props }) => (
   <svg
     width={size}
     height={size}
     viewBox="0 0 20 20"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"
+    {...props}
   >
     <path
       d="M13.7071 12.2929C13.3166 11.9024 12.6834 11.9024 12.2929 12.2929C11.9024 12.6834 11.9024 13.3166 12.2929 13.7071L13.7071 12.2929ZM18.2929 19.7071C18.6834 20.0976 19.3166 20.0976 19.7071 19.7071C20.0976 19.3166 20.0976 18.6834 19.7071 18.2929L18.2929 19.7071ZM8 14C4.68629 14 2 11.3137 2 8H0C0 12.4183 3.58172 16 8 16V14ZM2 8C2 4.68629 4.68629 2 8 2V0C3.58172 0 0 3.58172 0 8H2ZM8 2C11.3137 2 14 4.68629 14 8H16C16 3.58172 12.4183 0 8 0V2ZM14 8C14 11.3137 11.3137 14 8 14V16C12.4183 16 16 12.4183 16 8H14ZM12.2929 13.7071L18.2929 19.7071L19.7071 18.2929L13.7071 12.2929L12.2929 13.7071Z"
       fill={color}
     />
-  </svg>;
-};
+  </svg>
+);
 
 /* const Play = styled(PlayIcon)`
   fill: "white";
