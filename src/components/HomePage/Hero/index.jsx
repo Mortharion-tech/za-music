@@ -8,7 +8,7 @@ function Hero() {
     <Wrapper>
       <TextWrapper>
         <MainTitle>Radio</MainTitle>
-        <Text>Pick your today's mood. We will play a perfect mix!</Text>
+        <Text>Pick your today&apos;s mood. We will play a perfect mix!</Text>
         <PlayButton>
           <Play />
           <ButtonText>Play</ButtonText>
