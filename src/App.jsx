@@ -1,15 +1,15 @@
 import { ThemeProvider } from "styled-components";
-import { theme } from "./styles/Theme";
-import {
+import { theme } from "@/styles/Theme";
+/* import {
   ButtonText,
   MainTitle,
   SectionSubtitle,
   SectionTitle,
   SubText,
   Text,
-} from "./components/ui/Typography";
-import { GlobalStyles } from "./styles/Global";
-import {
+} from "./components/ui/Typography"; */
+import { GlobalStyles } from "@/styles/Global";
+/* import {
   ArrowLeft,
   ArrowRight,
   Heart,
@@ -20,29 +20,16 @@ import {
   SkipLeft,
   SkipRight,
   Volume,
-} from "./components/ui/Icons.jsx";
+} from "./components/ui/Icons.jsx"; */
+import Home from "@/pages/Home";
+import Header from "@/components/Header";
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyles />
-      <MainTitle>Hello</MainTitle>
-      <SectionTitle>Hello</SectionTitle>
-      <SectionSubtitle>Hello</SectionSubtitle>
-      <Text>Hello</Text>
-      <SubText>Hello</SubText>
-      <ButtonText>Hello</ButtonText>
-      <br />
-      <Play color="red" />
-      <SkipLeft color="blue" />
-      <SkipRight color="green" />
-      <Pause />
-      <Volume />
-      <Music />
-      <ArrowLeft />
-      <ArrowRight />
-      <Heart />
-      <Search />
+      <Header />
+      <Home />
     </ThemeProvider>
   );
 }
