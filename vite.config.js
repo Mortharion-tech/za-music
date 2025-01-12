@@ -3,7 +3,6 @@ import react from "@vitejs/plugin-react";
 import svgr from "@svgr/rollup";
 import path from "path";
 
-// https://vite.dev/config/
 export default defineConfig({
   plugins: [
     react(),
@@ -14,6 +13,19 @@ export default defineConfig({
   ],
   server: {
     port: 3000,
+    proxy: {
+      "/genre": {
+        target: "https://api.deezer.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/genre/, "/genre"),
+      },
+      "/chart": {
+        // Add this new proxy rule
+        target: "https://api.deezer.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/chart/, "/chart"),
+      },
+    },
   },
   resolve: {
     alias: {
