@@ -141,7 +141,7 @@ const Music = ({ size = 22, color = "#878787", strokeWidth = 1.5, ...props }) =>
   </svg>
 );
 
-const ArrowRight = ({ size = 9, color = "#878B92", strokeWidth = 2, ...props }) => (
+const ArrowLeft = ({ size = 9, color = "#878B92", strokeWidth = 2, ...props }) => (
   <svg
     width={size}
     height={Math.round((size * 16) / 9)}
@@ -160,7 +160,7 @@ const ArrowRight = ({ size = 9, color = "#878B92", strokeWidth = 2, ...props }) 
   </svg>
 );
 
-const ArrowLeft = styled(ArrowRight)`
+const ArrowRight = styled(ArrowLeft)`
   transform: rotate(180deg);
 `;
 
