@@ -1,4 +1,12 @@
 import styled from "styled-components";
+
+/* import PlayIcon from "@/assets/icons/play.svg";
+
+const Play = styled(PlayIcon)`
+  fill: ${(props) => props.color || "white"};
+  stroke: ${(props) => props.color || "white"};
+`; */
+
 const Play = ({ size = 19, color = "white", strokeWidth = 2, ...props }) => (
   <svg
     width={size}
