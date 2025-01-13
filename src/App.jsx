@@ -1,5 +1,6 @@
 import { ThemeProvider } from "styled-components";
 import { SkeletonTheme } from "react-loading-skeleton";
+import { Bounce, ToastContainer } from "react-toastify";
 import { theme } from "@/styles/Theme";
 /* import {
   ButtonText,
@@ -38,6 +39,19 @@ function App() {
         <GlobalStyles />
         <Header />
         <Home />
+        <ToastContainer
+          position="bottom-left"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick={false}
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="dark"
+          transition={Bounce}
+        />
       </SkeletonTheme>
     </ThemeProvider>
   );
