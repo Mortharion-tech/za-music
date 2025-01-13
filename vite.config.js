@@ -20,7 +20,6 @@ export default defineConfig({
         rewrite: (path) => path.replace(/^\/genre/, "/genre"),
       },
       "/chart": {
-        // Add this new proxy rule
         target: "https://api.deezer.com",
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/chart/, "/chart"),
