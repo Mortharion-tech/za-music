@@ -1,30 +1,15 @@
 import PropTypes from "prop-types";
 import { SubText } from "../ui/Typography";
-import {
-  Line,
-  SongNumberText,
-  StyledIconButton,
-  Table,
-  TableData,
-  TableHead,
-  TableHeading,
-  TableHeadingTime,
-  TrackInfo,
-  TrackInfoImage,
-  TrackInfoTextWrapper,
-  TrackSubText,
-  TrackTitle,
-} from "./styled";
-import { Heart } from "../ui/Icons";
-import { formatSecondsToMSS } from "@/utils/time";
+import { Line, Table, TableHead, TableHeading, TableHeadingTime } from "./styled";
+import TrackRow from "./TrackRow";
 
 function TracksTable({ tracks }) {
   console.log(tracks);
   return (
-    <Table>
+    <Table cellSpacing={0}>
       <TableHead>
         <tr>
-          <TableHeading>
+          <TableHeading first>
             <SubText>#</SubText>
           </TableHeading>
           <TableHeading>
@@ -46,29 +31,7 @@ function TracksTable({ tracks }) {
           <Line colSpan={5}></Line>
         </tr>
         {tracks?.map((track, index) => (
-          <tr key={track.id}>
-            <TableData>
-              <SongNumberText>{String(index + 1).padStart(2, "0")}</SongNumberText>
-            </TableData>
-            <TrackInfo>
-              <TrackInfoImage src={track.album.cover} alt={`${track.album.name}'s cover`} />
-              <TrackInfoTextWrapper>
-                <TrackTitle>{track.title}</TrackTitle>
-                <TrackSubText>{track.artist.name}</TrackSubText>
-              </TrackInfoTextWrapper>
-            </TrackInfo>
-            <TableData>
-              <SubText>{formatSecondsToMSS(track.duration)}</SubText>
-            </TableData>
-            <TableData>
-              <TrackSubText>{track.album.title}</TrackSubText>
-            </TableData>
-            <TableData>
-              <StyledIconButton width={25} height={25}>
-                <Heart />
-              </StyledIconButton>
-            </TableData>
-          </tr>
+          <TrackRow key={track.id} track={track} index={index} />
         ))}
       </tbody>
     </Table>
