@@ -4,7 +4,8 @@ import { loadCharts } from "@/services/api";
 import { SectionTitle } from "@/components/ui/Typography";
 import TracksTable from "@/components/TracksTable/";
 import { Hero, Genres, Artists } from "@/components/HomePage";
-import { ContentWrapper, GreyTitle, TrendsAndArtistsSection, StyledAside } from "./styled";
+import { GreyTitle, TrendsAndArtistsSection, StyledAside } from "./styled";
+import { ContentWrapper } from "@/components/Layout";
 
 //  Import Swiper styles
 import "swiper/css";
