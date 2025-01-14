@@ -25,10 +25,13 @@ import { GlobalStyles } from "@/styles/Global";
 } from "./components/ui/Icons.jsx"; */
 import Home from "@/pages/Home";
 import Header from "@/components/Header";
+import Player from "./components/Player";
 
 //  Import skeleton loader css
 import "react-loading-skeleton/dist/skeleton.css";
-import Player from "./components/Player";
+
+//  Import rc-slider css
+import "rc-slider/assets/index.css";
 
 function App() {
   return (

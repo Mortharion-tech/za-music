@@ -1,3 +1,4 @@
+import Slider from "rc-slider";
 import {
   ArtistName,
   ControlsWrapper,
@@ -89,7 +90,7 @@ function Player() {
         </ControlsWrapper>
         <ProgressWrapper>
           <TrackTime>0:00</TrackTime>
-          <input type="range" />
+          <Slider />
           <TrackTime>2:30</TrackTime>
         </ProgressWrapper>
         <VolumeWrapper>
