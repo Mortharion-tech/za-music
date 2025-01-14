@@ -28,6 +28,7 @@ import Header from "@/components/Header";
 
 //  Import skeleton loader css
 import "react-loading-skeleton/dist/skeleton.css";
+import Player from "./components/Player";
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
         <GlobalStyles />
         <Header />
         <Home />
+        <Player />
         <ToastContainer
           position="bottom-left"
           autoClose={5000}
