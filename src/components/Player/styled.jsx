@@ -17,7 +17,7 @@ export const TrackInfoWrapper = styled.div`
   display: flex;
   gap: 25px;
   align-items: center;
-  width: 400px;
+  min-width: 400px;
 `;
 
 export const TrackInfoTextWrapper = styled.div`
@@ -46,6 +46,7 @@ export const ProgressWrapper = styled.div`
   display: flex;
   align-items: center;
   margin-left: 60px;
+  width: 100%;
 `;
 
 export const VolumeWrapper = styled.div`
