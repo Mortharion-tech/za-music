@@ -1,6 +1,9 @@
+import { useReducer } from "react";
 import { ThemeProvider } from "styled-components";
 import { SkeletonTheme } from "react-loading-skeleton";
 import { Bounce, ToastContainer } from "react-toastify";
+import { initialState, playerReducer } from "./context/playerReducer";
+import { PlayerContext, PlayerDispatchContext } from "./context/playerContext";
 import { theme } from "@/styles/Theme";
 /* import {
   ButtonText,
@@ -34,31 +37,37 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "rc-slider/assets/index.css";
 
 function App() {
+  const [state, dispatch] = useReducer(playerReducer, initialState);
+
   return (
-    <ThemeProvider theme={theme}>
-      <SkeletonTheme
-        baseColor={theme.colors.secondaryBlack}
-        highlightColor={theme.colors.lightWhite}
-      >
-        <GlobalStyles />
-        <Header />
-        <Home />
-        <Player />
-        <ToastContainer
-          position="bottom-left"
-          autoClose={5000}
-          hideProgressBar={false}
-          newestOnTop={false}
-          closeOnClick={false}
-          rtl={false}
-          pauseOnFocusLoss
-          draggable
-          pauseOnHover
-          theme="dark"
-          transition={Bounce}
-        />
-      </SkeletonTheme>
-    </ThemeProvider>
+    <PlayerContext.Provider value={state}>
+      <PlayerDispatchContext.Provider value={dispatch}>
+        <ThemeProvider theme={theme}>
+          <SkeletonTheme
+            baseColor={theme.colors.secondaryBlack}
+            highlightColor={theme.colors.lightWhite}
+          >
+            <GlobalStyles />
+            <Header />
+            <Home />
+            <Player />
+            <ToastContainer
+              position="bottom-left"
+              autoClose={5000}
+              hideProgressBar={false}
+              newestOnTop={false}
+              closeOnClick={false}
+              rtl={false}
+              pauseOnFocusLoss
+              draggable
+              pauseOnHover
+              theme="dark"
+              transition={Bounce}
+            />
+          </SkeletonTheme>
+        </ThemeProvider>
+      </PlayerDispatchContext.Provider>
+    </PlayerContext.Provider>
   );
 }
 
