@@ -1,4 +1,7 @@
+import { useContext, useEffect, useRef, useState } from "react";
 import Slider from "rc-slider";
+import { PlayerContext, PlayerDispatchContext } from "@/context/playerContext";
+import { actions } from "@/context/actions";
 import {
   ArtistName,
   ControlsWrapper,
@@ -7,20 +10,19 @@ import {
   TrackInfoTextWrapper,
   TrackInfoWrapper,
   TrackTime,
+  TrackTitle,
   VolumeWrapper,
   Wrapper,
 } from "./styled";
 import { ContentWrapper } from "../Layout";
-import { Text } from "../ui/Typography";
 import IconButton from "../ui/IconButton";
 import { Pause, Play, SkipLeft, SkipRight, Volume } from "../ui/Icons";
-
-import "rc-slider/assets/index.css";
 import { theme } from "@/styles/Theme";
-import { useEffect, useRef, useState } from "react";
 import { formatSecondsToMSS } from "@/utils/time";
 
-const track = {
+import "rc-slider/assets/index.css";
+
+/* const track = {
   id: 3050380851,
   title: "APT.",
   title_short: "APT.",
@@ -69,20 +71,18 @@ const track = {
     type: "album",
   },
   type: "track",
-};
+}; */
 function Player() {
+  const dispatch = useContext(PlayerDispatchContext);
+  const { track, isPlaying } = useContext(PlayerContext);
   const [playerState, setPlayerState] = useState({
-    isPlaying: false,
     currentTime: 0,
     duration: 0,
     volume: 0.5,
   });
   const audioRef = useRef();
 
-  const togglePlay = () => {
-    setPlayerState((prev) => ({ ...prev, isPlaying: !prev.isPlaying }));
-    audioRef?.current?.play();
-  };
+  const togglePlay = () => dispatch({ type: actions.TOGGLE_PLAY });
 
   const toggleVolume = () => {
     const newVolume = playerState.volume > 0 ? 0 : 1;
@@ -114,15 +114,22 @@ function Player() {
     setPlayerState((prev) => ({ ...prev, volume: newVolume }));
   };
 
+  const handleNextSong = () => dispatch({ type: actions.NEXT_SONG });
+  const handlePrevSong = () => dispatch({ type: actions.PREV_SONG });
+
   useEffect(() => {
     if (!audioRef?.current) return;
 
-    if (playerState.isPlaying) {
-      audioRef.current.play();
+    if (isPlaying) {
+      audioRef.current.play().catch((err) => console.log(err));
     } else {
       audioRef.current.pause();
     }
-  }, [audioRef, track, playerState.isPlaying]);
+  }, [audioRef, track, isPlaying]);
+
+  if (!track) {
+    return null;
+  }
 
   return (
     <Wrapper>
@@ -138,18 +145,18 @@ function Player() {
         <TrackInfoWrapper>
           <TrackImage src={track?.album.cover} alt={`${track?.album.title}'s cover`} />
           <TrackInfoTextWrapper>
-            <Text>{track?.title}</Text>
+            <TrackTitle>{track?.title}</TrackTitle>
             <ArtistName>{track?.artist.name}</ArtistName>
           </TrackInfoTextWrapper>
         </TrackInfoWrapper>
         <ControlsWrapper>
-          <IconButton>
+          <IconButton onClick={handlePrevSong}>
             <SkipLeft />
           </IconButton>
           <IconButton onClick={togglePlay} width={55} height={55} withBackground>
-            {playerState.isPlaying ? <Pause /> : <Play />}
+            {isPlaying ? <Pause /> : <Play />}
           </IconButton>
-          <IconButton>
+          <IconButton onClick={handleNextSong}>
             <SkipRight />
           </IconButton>
         </ControlsWrapper>
