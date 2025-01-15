@@ -15,6 +15,9 @@ import { Text } from "../ui/Typography";
 import IconButton from "../ui/IconButton";
 import { Play, SkipLeft, SkipRight, Volume } from "../ui/Icons";
 
+import "rc-slider/assets/index.css";
+import { theme } from "@/styles/Theme";
+
 const track = {
   id: 3050380851,
   title: "APT.",
@@ -90,12 +93,24 @@ function Player() {
         </ControlsWrapper>
         <ProgressWrapper>
           <TrackTime>0:00</TrackTime>
-          <Slider />
+          <Slider
+            style={{ padding: "3px 0" }}
+            trackStyle={{ height: 8, backgroundColor: theme.colors.white }}
+            railStyle={{ height: 8, backgroundColor: theme.colors.darkGrey }}
+            handleStyle={{ border: "none", backgroundColor: theme.colors.white, marginTop: -3 }}
+          />
           <TrackTime>2:30</TrackTime>
         </ProgressWrapper>
         <VolumeWrapper>
-          <Volume />
-          <input type="range" />
+          <IconButton height={24} width={24}>
+            <Volume />
+          </IconButton>
+          <Slider
+            style={{ padding: "3px 0" }}
+            trackStyle={{ height: 8, backgroundColor: theme.colors.white }}
+            railStyle={{ height: 8, backgroundColor: theme.colors.darkGrey }}
+            handleStyle={{ border: "none", backgroundColor: theme.colors.white, marginTop: -3 }}
+          />
         </VolumeWrapper>
       </ContentWrapper>
     </Wrapper>

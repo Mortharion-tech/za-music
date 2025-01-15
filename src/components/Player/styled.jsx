@@ -54,8 +54,10 @@ export const VolumeWrapper = styled.div`
   align-items: center;
   gap: 22px;
   margin-left: 130px;
+  min-width: 180px;
 `;
 
 export const TrackTime = styled(SubText)`
+  margin: 0 20px;
   color: ${(props) => (props.grey ? props.theme.colors.secondaryGrey : "inherit")};
 `;
