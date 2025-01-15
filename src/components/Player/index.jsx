@@ -141,6 +141,7 @@ function Player() {
           onTimeUpdate={onTimeUpdate}
           onLoadedMetadata={onTimeUpdate}
           hidden
+          onEnded={handleNextSong}
         />
         <TrackInfoWrapper>
           <TrackImage src={track?.album.cover} alt={`${track?.album.title}'s cover`} />
