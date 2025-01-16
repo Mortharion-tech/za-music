@@ -1,7 +1,7 @@
+import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../Header";
 import Player from "../Player";
-import { Outlet } from "react-router-dom";
 
 export const ContentWrapper = styled.div`
   max-width: 1920px;

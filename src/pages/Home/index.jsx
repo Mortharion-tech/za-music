@@ -5,7 +5,6 @@ import { SectionTitle } from "@/components/ui/Typography";
 import TracksTable from "@/components/TracksTable/";
 import { Hero, Genres, Artists } from "@/components/HomePage";
 import { GreyTitle, TrendsAndArtistsSection, StyledAside } from "./styled";
-import { ContentWrapper } from "@/components/Layout";
 
 //  Import Swiper styles
 import "swiper/css";
@@ -33,7 +32,7 @@ function Home() {
   }, []);
 
   return (
-    <ContentWrapper>
+    <main>
       <Hero />
       <Genres />
       <TrendsAndArtistsSection>
@@ -48,7 +47,7 @@ function Home() {
           <Artists isLoading={isLoading} artists={chart?.artists?.data} />
         </StyledAside>
       </TrendsAndArtistsSection>
-    </ContentWrapper>
+    </main>
   );
 }
 
