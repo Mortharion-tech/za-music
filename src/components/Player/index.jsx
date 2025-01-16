@@ -184,7 +184,7 @@ function Player() {
             step={0.01}
             min={0}
             max={1}
-            value={playerState.value}
+            value={playerState.volume}
             onChange={onVolumeChange}
             style={{ padding: "3px 0" }}
             trackStyle={{ height: 8, backgroundColor: theme.colors.white }}
