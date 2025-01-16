@@ -35,6 +35,9 @@ import "react-loading-skeleton/dist/skeleton.css";
 
 //  Import rc-slider css
 import "rc-slider/assets/index.css";
+import { Route, Routes } from "react-router-dom";
+import Search from "./pages/Search";
+import Layout from "./components/Layout";
 
 function App() {
   const [state, dispatch] = useReducer(playerReducer, initialState);
@@ -48,9 +51,12 @@ function App() {
             highlightColor={theme.colors.lightWhite}
           >
             <GlobalStyles />
-            <Header />
-            <Home />
-            <Player />
+            <Routes>
+              <Route path="/" element={<Layout />}>
+                <Route index element={<Home />} />
+                <Route path="/search" element={<Search />} />
+              </Route>
+            </Routes>
             <ToastContainer
               position="bottom-left"
               autoClose={5000}
