@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { toast } from "react-toastify";
-import { loadCharts } from "@/services/api";
+import { loadCharts, loadTopRadioTracks } from "@/services/api";
 import { SectionTitle } from "@/components/ui/Typography";
 import TracksTable from "@/components/TracksTable/";
 import { Hero, Genres, Artists } from "@/components/HomePage";
@@ -11,6 +11,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 
 function Home() {
+  const [radio, setRadio] = useState();
   const [chart, setChart] = useState();
   const [isLoading, setIsLoading] = useState(false);
 
@@ -18,9 +19,11 @@ function Home() {
     const loadData = async () => {
       try {
         setIsLoading(true);
-        const data = await loadCharts();
+        const chart = await loadCharts();
+        const radio = await loadTopRadioTracks();
         console.log("API response:", data);
-        setChart(data);
+        setChart(chart);
+        setRadio(radio);
       } catch (err) {
         toast.error(err.message);
       } finally {
@@ -33,7 +36,7 @@ function Home() {
 
   return (
     <main>
-      <Hero />
+      <Hero tracks={radio} />
       <Genres />
       <TrendsAndArtistsSection>
         <div>
