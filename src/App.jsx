@@ -10,6 +10,7 @@ import { GlobalStyles } from "@/styles/Global";
 import Home from "@/pages/Home";
 import Search from "./pages/Search";
 import Layout from "./components/Layout";
+import Error from "./pages/Error";
 
 //  Import skeleton loader css
 import "react-loading-skeleton/dist/skeleton.css";
@@ -33,6 +34,7 @@ function App() {
               <Route path="/" element={<Layout />}>
                 <Route index element={<Home />} />
                 <Route path="/search" element={<Search />} />
+                <Route path="*" element={<Error />} />
               </Route>
             </Routes>
             <ToastContainer
