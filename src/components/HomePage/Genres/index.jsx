@@ -74,7 +74,9 @@ function Genres() {
         <Swiper ref={sliderRef} slidesPerView="auto" spaceBetween={20} modules={[Pagination]}>
           {genres?.map((genre) => (
             <SwiperSlide key={genre.id} style={{ width: "auto" }}>
-              <GenreCard name={genre.name} backgroundImage={genre.picture_medium} />
+              <Link to={`/genres/${genre.id}`}>
+                <GenreCard name={genre.name} backgroundImage={genre.picture_medium} />
+              </Link>
             </SwiperSlide>
           ))}
         </Swiper>

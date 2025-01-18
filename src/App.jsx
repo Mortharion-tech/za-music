@@ -8,17 +8,18 @@ import { initialState, playerReducer } from "./context/playerReducer";
 import { PlayerContext, PlayerDispatchContext } from "./context/playerContext";
 import { theme } from "@/styles/Theme";
 import { GlobalStyles } from "@/styles/Global";
+import { setStorageValue } from "./services/localStorage";
 import Home from "@/pages/Home";
 import Search from "./pages/Search";
 import Layout from "./components/Layout";
 import Error from "./pages/Error";
+import Genre from "./pages/Genre";
 
 //  Import skeleton loader css
 import "react-loading-skeleton/dist/skeleton.css";
 
 //  Import rc-slider css
 import "rc-slider/assets/index.css";
-import { setStorageValue } from "./services/localStorage";
 
 function App() {
   const [state, dispatch] = useReducer(playerReducer, initialState);
@@ -41,6 +42,7 @@ function App() {
                 <Route path="/" element={<Layout />}>
                   <Route index element={<Home />} />
                   <Route path="/search" element={<Search />} />
+                  <Route path="/genres/:genreId" element={<Genre />} />
                   <Route path="*" element={<Error />} />
                 </Route>
               </Routes>
