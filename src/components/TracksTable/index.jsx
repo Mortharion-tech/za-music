@@ -25,6 +25,12 @@ function TracksTable({ tracks, isLoading }) {
       });
     }
   };
+
+  const handleSaveTrackClick = (trackId) => {
+    //  console.log(trackId);
+    dispatch({ type: actions.TOGGLE_SAVE_TRACK, trackId });
+  };
+
   return (
     <Table cellSpacing={0}>
       <TableHead>
@@ -58,6 +64,8 @@ function TracksTable({ tracks, isLoading }) {
               key={currentTrack.id}
               track={currentTrack}
               index={index}
+              handleSaveTrackClick={handleSaveTrackClick}
+              isSaved={savedTrackIds.includes(currentTrack.id)}
             />
           ))}
         {isLoading && [...Array(9).keys()].map((num) => <TrackRow key={num} index={num} />)}
