@@ -1,4 +1,5 @@
 import { SectionSubtitle } from "@/components/ui/Typography";
+import { device } from "@/styles/Breakpoints";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
@@ -23,6 +24,11 @@ export const Wrapper = styled.div`
     background-size: cover;
     background-position: center center;
     border-radius: 25px;
+
+    ${device.md} {
+      width: 137px;
+      height: 95px;
+    }
   }
 `;
 

@@ -1,3 +1,4 @@
+import { device } from "@/styles/Breakpoints";
 import { styled } from "styled-components";
 
 export const MainTitle = styled.h1`
@@ -29,6 +30,11 @@ export const SectionSubtitle = styled.h3`
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+
+  ${device.md} {
+    font-size: 20px;
+    line-height: 30px;
+  }
 `;
 
 export const Text = styled.span`
