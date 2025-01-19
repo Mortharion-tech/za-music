@@ -39,14 +39,18 @@ function TrackRow({
         {track ? (
           <TrackInfoImage src={track?.album?.cover} alt={`${track?.album?.title}'s cover`} />
         ) : (
-          <Skeleton width={65} height={65} borderRadius={15} />
+          <Skeleton
+            width={screenWidth > breakpoints.md ? 65 : 45}
+            height={screenWidth > breakpoints.md ? 65 : 45}
+            borderRadius={screenWidth > breakpoints.md ? 15 : 10}
+          />
         )}
         <TrackInfoTextWrapper>
           <TrackTitle>
-            {track?.title || <Skeleton width={screenWidth > breakpoints.md ? 320 : 170} />}
+            {track?.title || <Skeleton width={screenWidth > breakpoints.md ? 320 : 110} />}
           </TrackTitle>
           <TrackSubText>
-            {track?.artist?.name || <Skeleton width={screenWidth > breakpoints.md ? 250 : 120} />}
+            {track?.artist?.name || <Skeleton width={screenWidth > breakpoints.md ? 250 : 80} />}
           </TrackSubText>
         </TrackInfoTextWrapper>
       </TrackInfo>
