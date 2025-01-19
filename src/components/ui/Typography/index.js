@@ -3,12 +3,17 @@ import { styled } from "styled-components";
 
 export const MainTitle = styled.h1`
   font-family: ${({ theme }) => theme.fonts.poppins}, sans-serif;
-  font-size: ${({ theme }) => theme.fontWeights.bold};
-  font-weight: 600;
+  font-weight: ${({ theme }) => theme.fontWeights.bold};
+  font-size: 60px;
   line-height: 90px;
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+
+  ${device.md} {
+    font-size: 30px;
+    line-height: 45px;
+  }
 `;
 
 export const SectionTitle = styled.h2`
@@ -54,9 +59,25 @@ export const Text = styled.span`
 `;
 
 export const SubText = styled.span`
-  font-family: Inter, sans-serif;
+  font-family: ${({ theme }) => theme.fonts.inter}, sans-serif;
   font-size: ${({ theme }) => theme.fontWeights.bold};
   font-size: 20px;
+  font-weight: 400;
+  line-height: 24.2px;
+  text-align: left;
+  text-underline-position: from-font;
+  text-decoration-skip-ink: none;
+
+  ${device.md} {
+    font-size: 18px;
+    line-height: 22px;
+  }
+`;
+
+export const SmallText = styled.span`
+  font-family: ${({ theme }) => theme.fonts.inter}, sans-serif;
+  font-size: ${({ theme }) => theme.fontWeights.bold};
+  font-size: 18px;
   font-weight: 400;
   line-height: 24.2px;
   text-align: left;
