@@ -76,7 +76,8 @@ function TracksTable({ tracks, isLoading }) {
               screenWidth={width}
             />
           ))}
-        {isLoading && [...Array(9).keys()].map((num) => <TrackRow key={num} index={num} />)}
+        {isLoading &&
+          [...Array(9).keys()].map((num) => <TrackRow key={num} index={num} screenWidth={width} />)}
       </tbody>
     </Table>
   );
