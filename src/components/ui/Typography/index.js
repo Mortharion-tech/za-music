@@ -1,4 +1,4 @@
-import { device } from "@/styles/Breakpoints";
+import { device } from "@/styles/BreakPoints";
 import { styled } from "styled-components";
 
 export const MainTitle = styled.h1`
@@ -19,6 +19,11 @@ export const SectionTitle = styled.h2`
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+
+  ${device.md} {
+    font-size: 22px;
+    line-height: 33px;
+  }
 `;
 
 export const SectionSubtitle = styled.h3`
@@ -57,6 +62,11 @@ export const SubText = styled.span`
   text-align: left;
   text-underline-position: from-font;
   text-decoration-skip-ink: none;
+
+  ${device.md} {
+    font-size: 18px;
+    line-height: 22px;
+  }
 `;
 
 export const ButtonText = styled.span`

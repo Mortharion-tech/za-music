@@ -16,8 +16,17 @@ import { formatSecondsToMSS } from "@/utils/time";
 import { SubText } from "@/components/ui/Typography";
 import { Heart, Pause, Play } from "@/components/ui/Icons";
 import { theme } from "@/styles/Theme";
+import { breakpoints } from "@/styles/BreakPoints";
 
-function TrackRow({ track, index, onClick, isPlaying, handleSaveTrackClick, isSaved }) {
+function TrackRow({
+  track,
+  index,
+  onClick,
+  isPlaying,
+  handleSaveTrackClick,
+  isSaved,
+  screenWidth,
+}) {
   return (
     <StyledTrackRow key={track?.id} onClick={() => onClick(track)}>
       <TableData>
@@ -33,18 +42,26 @@ function TrackRow({ track, index, onClick, isPlaying, handleSaveTrackClick, isSa
           <Skeleton width={65} height={65} borderRadius={15} />
         )}
         <TrackInfoTextWrapper>
-          <TrackTitle>{track?.title || <Skeleton width={320} />}</TrackTitle>
-          <TrackSubText>{track?.artist?.name || <Skeleton width={250} />}</TrackSubText>
+          <TrackTitle>
+            {track?.title || <Skeleton width={screenWidth > breakpoints.md ? 320 : 170} />}
+          </TrackTitle>
+          <TrackSubText>
+            {track?.artist?.name || <Skeleton width={screenWidth > breakpoints.md ? 250 : 120} />}
+          </TrackSubText>
         </TrackInfoTextWrapper>
       </TrackInfo>
-      <TableData>
-        <SubText>
-          {track?.duration ? formatSecondsToMSS(track?.duration) : <Skeleton width={48} />}
-        </SubText>
-      </TableData>
-      <TableData>
-        <TrackSubText>{track?.album?.title || <Skeleton width={350} />}</TrackSubText>
-      </TableData>
+      {screenWidth > breakpoints.md && (
+        <TableData>
+          <SubText>
+            {track?.duration ? formatSecondsToMSS(track?.duration) : <Skeleton width={48} />}
+          </SubText>
+        </TableData>
+      )}
+      {screenWidth > breakpoints.md && (
+        <TableData>
+          <TrackSubText>{track?.album?.title || <Skeleton width={350} />}</TrackSubText>
+        </TableData>
+      )}
       <TableData>
         {track ? (
           <StyledIconButton
@@ -85,6 +102,7 @@ TrackRow.propTypes = {
     isPlaying: PropTypes.bool,
     handleSaveTrackClick: PropTypes.func,
     isSaved: PropTypes.bool,
+    screenWidth: PropTypes.number,
   }),
 };
 

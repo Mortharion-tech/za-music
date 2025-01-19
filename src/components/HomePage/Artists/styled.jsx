@@ -1,9 +1,14 @@
+import { device } from "@/styles/BreakPoints";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
   margin-top: 35px;
+
+  ${device.md} {
+    margin-top: 20px;
+  }
 `;
 
 export const ArtistsWrapper = styled.div`
