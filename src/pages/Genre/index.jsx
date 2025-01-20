@@ -1,4 +1,3 @@
-import { TextWrapper } from "@/components/HomePage/Hero/styled";
 import TracksTable from "@/components/TracksTable";
 import { Music } from "@/components/ui/Icons";
 import { MainTitle, SmallText } from "@/components/ui/Typography";
@@ -6,6 +5,7 @@ import { loadGenre } from "@/services/api";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
+import { SongsCountWrapper, TextWrapper, Wrapper } from "./styled";
 
 function Genre() {
   const { genreId } = useParams();
@@ -28,17 +28,17 @@ function Genre() {
     loadData();
   }, []);
   return (
-    <div>
-      {/* <TextWrapper>
-        <MainTitle>{genre.name}</MainTitle>
+    <Wrapper>
+      <TextWrapper>
+        <MainTitle>{genre?.genre?.name}</MainTitle>
         <SongsCountWrapper>
           <Music />
-          <SmallText></SmallText>
+          <SmallText>{genre?.tracks?.length} songs</SmallText>
         </SongsCountWrapper>
-      </TextWrapper> */}
+      </TextWrapper>
 
       <TracksTable isLoading={isLoading} tracks={genre?.tracks} />
-    </div>
+    </Wrapper>
   );
 }
 
