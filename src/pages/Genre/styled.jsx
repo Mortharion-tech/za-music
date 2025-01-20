@@ -14,7 +14,7 @@ export const Wrapper = styled.div`
   }
 
   ${device.md} {
-    gap: 72px;
+    gap: 45px;
     padding-top: 28px;
   }
 `;
