@@ -13,7 +13,7 @@ function TracksTable({ tracks, isLoading }) {
   //  console.log(tracks);
   const { width } = useWindowSize();
   const dispatch = useContext(PlayerDispatchContext);
-  const { track, isPlaying } = useContext(PlayerContext);
+  const { track, isPlaying, savedTrackIds } = useContext(PlayerContext);
 
   const handleTrackClick = (clickedTrack) => {
     //  console.log(clickedTrack);

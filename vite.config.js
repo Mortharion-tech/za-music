@@ -24,6 +24,12 @@ export default defineConfig({
         changeOrigin: true,
         rewrite: (path) => path.replace(/^\/chart/, "/chart"),
       },
+      "/radio": {
+        target: "https://api.deezer.com",
+        changeOrigin: true,
+        secure: false,
+        rewrite: (path) => path.replace(/^\/radio/, "/radio"),
+      },
     },
   },
   resolve: {
