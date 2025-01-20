@@ -1,4 +1,5 @@
 import { TextWrapper } from "@/components/HomePage/Hero/styled";
+import TracksTable from "@/components/TracksTable";
 import { Music } from "@/components/ui/Icons";
 import { MainTitle, SmallText } from "@/components/ui/Typography";
 import { loadGenre } from "@/services/api";
@@ -16,7 +17,6 @@ function Genre() {
       try {
         setIsLoading(true);
         const genre = await loadGenre(genreId);
-        console.log("API response:", data);
         setGenre(genre);
       } catch (err) {
         toast.error(err.message);
@@ -29,13 +29,15 @@ function Genre() {
   }, []);
   return (
     <div>
-      <TextWrapper>
+      {/* <TextWrapper>
         <MainTitle>{genre.name}</MainTitle>
         <SongsCountWrapper>
           <Music />
           <SmallText></SmallText>
         </SongsCountWrapper>
-      </TextWrapper>
+      </TextWrapper> */}
+
+      <TracksTable isLoading={isLoading} tracks={genre?.tracks} />
     </div>
   );
 }
