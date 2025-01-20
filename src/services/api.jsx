@@ -38,6 +38,17 @@ export async function loadGenres() {
   }
 }
 
+export async function loadGenre(genreId) {
+  try {
+    const data = await axios.get(`${API_ALL_GENRES_URL}/${genreId}`);
+    console.log("API response:", data.data);
+    if (!data.data) throw Error();
+    return data.data;
+  } catch (err) {
+    throw Error("Failed to load this genre!");
+  }
+}
+
 export async function search(searchQuery) {
   try {
     const data = await axios.get(`${API_SEARCH_URL}?q=${searchQuery}`);
