@@ -4,6 +4,7 @@ import {
   MOBILE_PLAYER_HEIGHT,
   PLAYER_HEIGHT,
 } from "@/common/constants";
+import { device } from "@/styles/BreakPoints";
 import styled from "styled-components";
 
 export const Wrapper = styled.div`

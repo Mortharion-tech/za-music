@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Text } from "@/components/ui/Typography";
+import { device } from "@/styles/BreakPoints";
 
 export const Wrapper = styled.div`
   display: flex;
