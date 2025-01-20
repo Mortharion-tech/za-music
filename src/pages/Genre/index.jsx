@@ -6,6 +6,7 @@ import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { toast } from "react-toastify";
 import { SongsCountWrapper, TextWrapper, Wrapper } from "./styled";
+import Skeleton from "react-loading-skeleton";
 
 function Genre() {
   const { genreId } = useParams();
@@ -30,10 +31,12 @@ function Genre() {
   return (
     <Wrapper>
       <TextWrapper>
-        <MainTitle>{genre?.genre?.name}</MainTitle>
+        <MainTitle>{genre?.genre?.name || <Skeleton width={200} />}</MainTitle>
         <SongsCountWrapper>
           <Music />
-          <SmallText>{genre?.tracks?.length} songs</SmallText>
+          <SmallText>
+            {isLoading ? <Skeleton width={40} /> : `${genre?.tracks?.length} songs`}
+          </SmallText>
         </SongsCountWrapper>
       </TextWrapper>
 
