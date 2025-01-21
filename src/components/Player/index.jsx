@@ -5,6 +5,7 @@ import { actions } from "@/context/actions";
 import {
   ArtistName,
   ControlsWrapper,
+  MobileTrackRow,
   ProgressWrapper,
   TrackImage,
   TrackInfoTextWrapper,
@@ -22,6 +23,8 @@ import { formatSecondsToMSS } from "@/utils/time";
 
 import "rc-slider/assets/index.css";
 import PropTypes from "prop-types";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import { breakpoints } from "@/styles/BreakPoints";
 
 /* const track = {
   id: 3050380851,
@@ -158,7 +161,7 @@ function Player() {
   );
 }
 
-function PlayerLayout(
+function PlayerLayout({
   track,
   handlePrevSong,
   handleNextSong,
@@ -168,7 +171,45 @@ function PlayerLayout(
   onTrackTimeDrag,
   toggleVolume,
   onVolumeChange,
-) {
+}) {
+  const { width } = useWindowSize();
+
+  if (width < breakpoints.lg) {
+    return (
+      <ContentWrapper display="flex" align-items="center" direction="column" gap={14}>
+        <MobileTrackRow>
+          <TrackInfoWrapper>
+            <TrackImage src={track?.album?.cover} alt={`${track?.album?.title}'s cover`} />
+            <TrackInfoTextWrapper>
+              <TrackTitle>{track?.title}</TrackTitle>
+              <ArtistName>{track?.artist?.name}</ArtistName>
+            </TrackInfoTextWrapper>
+          </TrackInfoWrapper>
+          <IconButton onClick={togglePlay} width={55} height={55} withBackground>
+            {isPlaying ? <Pause /> : <Play />}
+          </IconButton>
+        </MobileTrackRow>
+        <ProgressWrapper>
+          <TrackTime>{formatSecondsToMSS(playerState?.currentTime)}</TrackTime>
+          <Slider
+            onChange={onTrackTimeDrag}
+            step={0.2}
+            min={0}
+            max={playerState?.duration}
+            value={playerState?.currentTime}
+            style={{ padding: "3px 0" }}
+            trackStyle={{ height: 8, backgroundColor: theme.colors.white }}
+            railStyle={{ height: 8, backgroundColor: theme.colors.darkGrey }}
+            handleStyle={{ border: "none", backgroundColor: theme.colors.white, marginTop: -3 }}
+          />
+          <TrackTime last={1} grey={1}>
+            {formatSecondsToMSS(playerState?.duration)}
+          </TrackTime>
+        </ProgressWrapper>
+      </ContentWrapper>
+    );
+  }
+
   return (
     <ContentWrapper display="flex" align-items="center">
       <TrackInfoWrapper>
@@ -202,7 +243,7 @@ function PlayerLayout(
           railStyle={{ height: 8, backgroundColor: theme.colors.darkGrey }}
           handleStyle={{ border: "none", backgroundColor: theme.colors.white, marginTop: -3 }}
         />
-        <TrackTime>{formatSecondsToMSS(playerState?.duration)}</TrackTime>
+        <TrackTime grey={1}>{formatSecondsToMSS(playerState?.duration)}</TrackTime>
       </ProgressWrapper>
       <VolumeWrapper>
         <IconButton onClick={toggleVolume} height={24} width={24}>
