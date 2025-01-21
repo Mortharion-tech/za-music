@@ -20,8 +20,8 @@ function Home() {
       try {
         setIsLoading(true);
         const [chart, radio] = await Promise.all([loadCharts(), loadTopRadioTracks()]);
-        console.log("API response:", data);
         setChart(chart);
+        //  TODO (optional): change/update radio list with multiple clicks
         setRadio(radio);
       } catch (err) {
         toast.error(err.message);

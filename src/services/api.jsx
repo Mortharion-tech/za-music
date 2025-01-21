@@ -9,8 +9,9 @@ const API_TOP_TRACKS_RADIO_URL = "/radio/37151/tracks";
 export async function loadTopRadioTracks() {
   try {
     const data = await axios(`${API_TOP_TRACKS_RADIO_URL}?limit=100`);
+    console.log("Radio API response:", data);
     if (!data.data.data) throw Error();
-    /*     console.log("API response:", data.data.data); */
+    console.log("Radio API response:", data.data.data);
     return data.data.data;
   } catch (err) {
     throw Error("Failed to load radio!");
