@@ -24,6 +24,10 @@ export const TrackInfoWrapper = styled.div`
   gap: 25px;
   align-items: center;
   min-width: 400px;
+
+  @media (max-width: 1400px) {
+    min-width: 280px;
+  }
 `;
 
 export const TrackInfoTextWrapper = styled.div`
@@ -75,6 +79,10 @@ export const VolumeWrapper = styled.div`
   gap: 22px;
   margin-left: 130px;
   min-width: 180px;
+
+  ${device.xl} {
+    margin-left: 60px;
+  }
 `;
 
 export const TrackTime = styled(SubText)`
