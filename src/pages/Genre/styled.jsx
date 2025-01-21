@@ -29,4 +29,5 @@ export const SongsCountWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 12px;
+  color: ${({ theme }) => theme.colors.secondaryGrey};
 `;
