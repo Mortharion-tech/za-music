@@ -21,6 +21,7 @@ import { theme } from "@/styles/Theme";
 import { formatSecondsToMSS } from "@/utils/time";
 
 import "rc-slider/assets/index.css";
+import PropTypes from "prop-types";
 
 /* const track = {
   id: 3050380851,
@@ -133,68 +134,122 @@ function Player() {
 
   return (
     <Wrapper>
-      <ContentWrapper display="flex" align-items="center">
-        <audio
-          ref={audioRef}
-          src={track.preview}
-          controls
-          onTimeUpdate={onTimeUpdate}
-          onLoadedMetadata={onTimeUpdate}
-          hidden
-          onEnded={handleNextSong}
-        />
-        <TrackInfoWrapper>
-          <TrackImage src={track?.album.cover} alt={`${track?.album.title}'s cover`} />
-          <TrackInfoTextWrapper>
-            <TrackTitle>{track?.title}</TrackTitle>
-            <ArtistName>{track?.artist.name}</ArtistName>
-          </TrackInfoTextWrapper>
-        </TrackInfoWrapper>
-        <ControlsWrapper>
-          <IconButton onClick={handlePrevSong}>
-            <SkipLeft />
-          </IconButton>
-          <IconButton onClick={togglePlay} width={55} height={55} withBackground>
-            {isPlaying ? <Pause /> : <Play />}
-          </IconButton>
-          <IconButton onClick={handleNextSong}>
-            <SkipRight />
-          </IconButton>
-        </ControlsWrapper>
-        <ProgressWrapper>
-          <TrackTime>{formatSecondsToMSS(playerState.currentTime)}</TrackTime>
-          <Slider
-            onChange={onTrackTimeDrag}
-            step={0.2}
-            min={0}
-            max={playerState.duration}
-            value={playerState.currentTime}
-            style={{ padding: "3px 0" }}
-            trackStyle={{ height: 8, backgroundColor: theme.colors.white }}
-            railStyle={{ height: 8, backgroundColor: theme.colors.darkGrey }}
-            handleStyle={{ border: "none", backgroundColor: theme.colors.white, marginTop: -3 }}
-          />
-          <TrackTime>{formatSecondsToMSS(playerState.duration)}</TrackTime>
-        </ProgressWrapper>
-        <VolumeWrapper>
-          <IconButton onClick={toggleVolume} height={24} width={24}>
-            <Volume />
-          </IconButton>
-          <Slider
-            step={0.01}
-            min={0}
-            max={1}
-            value={playerState.volume}
-            onChange={onVolumeChange}
-            style={{ padding: "3px 0" }}
-            trackStyle={{ height: 8, backgroundColor: theme.colors.white }}
-            railStyle={{ height: 8, backgroundColor: theme.colors.darkGrey }}
-            handleStyle={{ border: "none", backgroundColor: theme.colors.white, marginTop: -3 }}
-          />
-        </VolumeWrapper>
-      </ContentWrapper>
+      <audio
+        ref={audioRef}
+        src={track.preview}
+        controls
+        onTimeUpdate={onTimeUpdate}
+        onLoadedMetadata={onTimeUpdate}
+        hidden
+        onEnded={handleNextSong}
+      />
+      <PlayerLayout
+        track={track}
+        handlePrevSong={handlePrevSong}
+        handleNextSong={handleNextSong}
+        togglePlay={togglePlay}
+        isPlaying={isPlaying}
+        playerState={playerState}
+        onTrackTimeDrag={onTrackTimeDrag}
+        toggleVolume={toggleVolume}
+        onVolumeChange={onVolumeChange}
+      />
     </Wrapper>
   );
 }
+
+function PlayerLayout(
+  track,
+  handlePrevSong,
+  handleNextSong,
+  togglePlay,
+  isPlaying,
+  playerState,
+  onTrackTimeDrag,
+  toggleVolume,
+  onVolumeChange,
+) {
+  return (
+    <ContentWrapper display="flex" align-items="center">
+      <TrackInfoWrapper>
+        <TrackImage src={track?.album?.cover} alt={`${track?.album?.title}'s cover`} />
+        <TrackInfoTextWrapper>
+          <TrackTitle>{track?.title}</TrackTitle>
+          <ArtistName>{track?.artist?.name}</ArtistName>
+        </TrackInfoTextWrapper>
+      </TrackInfoWrapper>
+      <ControlsWrapper>
+        <IconButton onClick={handlePrevSong}>
+          <SkipLeft />
+        </IconButton>
+        <IconButton onClick={togglePlay} width={55} height={55} withBackground>
+          {isPlaying ? <Pause /> : <Play />}
+        </IconButton>
+        <IconButton onClick={handleNextSong}>
+          <SkipRight />
+        </IconButton>
+      </ControlsWrapper>
+      <ProgressWrapper>
+        <TrackTime>{formatSecondsToMSS(playerState?.currentTime)}</TrackTime>
+        <Slider
+          onChange={onTrackTimeDrag}
+          step={0.2}
+          min={0}
+          max={playerState?.duration}
+          value={playerState?.currentTime}
+          style={{ padding: "3px 0" }}
+          trackStyle={{ height: 8, backgroundColor: theme.colors.white }}
+          railStyle={{ height: 8, backgroundColor: theme.colors.darkGrey }}
+          handleStyle={{ border: "none", backgroundColor: theme.colors.white, marginTop: -3 }}
+        />
+        <TrackTime>{formatSecondsToMSS(playerState?.duration)}</TrackTime>
+      </ProgressWrapper>
+      <VolumeWrapper>
+        <IconButton onClick={toggleVolume} height={24} width={24}>
+          <Volume />
+        </IconButton>
+        <Slider
+          step={0.01}
+          min={0}
+          max={1}
+          value={playerState?.volume}
+          onChange={onVolumeChange}
+          style={{ padding: "3px 0" }}
+          trackStyle={{ height: 8, backgroundColor: theme.colors.white }}
+          railStyle={{ height: 8, backgroundColor: theme.colors.darkGrey }}
+          handleStyle={{ border: "none", backgroundColor: theme.colors.white, marginTop: -3 }}
+        />
+      </VolumeWrapper>
+    </ContentWrapper>
+  );
+}
+
+PlayerLayout.propTypes = {
+  tracks: PropTypes.shape({
+    id: PropTypes.number,
+    title: PropTypes.string,
+    duration: PropTypes.number,
+    preview: PropTypes.string,
+    artist: PropTypes.shape({
+      name: PropTypes.string,
+    }),
+    album: PropTypes.shape({
+      title: PropTypes.string,
+      cover: PropTypes.string,
+    }),
+  }),
+  handlePrevSong: PropTypes.func,
+  handleNextSong: PropTypes.func,
+  togglePlay: PropTypes.func,
+  isPlaying: PropTypes.bool,
+  playerState: PropTypes.shape({
+    currentTime: PropTypes.number,
+    duration: PropTypes.number,
+    volume: PropTypes.number,
+  }),
+  onTrackTimeDrag: PropTypes.func,
+  toggleVolume: PropTypes.func,
+  onVolumeChange: PropTypes.func,
+};
 
 export default Player;
