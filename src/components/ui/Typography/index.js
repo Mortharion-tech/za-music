@@ -85,7 +85,6 @@ export const SmallText = styled.span`
   text-decoration-skip-ink: none;
 
   ${device.md} {
-    font-size: 18px;
     line-height: 22px;
   }
 `;
