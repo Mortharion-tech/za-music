@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { MainTitle, Text } from "@/components/ui/Typography";
 import Button from "@/components/ui/Button";
-import { device } from "@/styles/Breakpoints";
+import { device } from "@/styles/BreakPoints";
 
 const HERO_IMAGE_HIDDEN_BREAKPOINT = 1050;
 

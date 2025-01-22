@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import IconButton from "@/components/ui/IconButton";
-import { device } from "@/styles/Breakpoints";
+import { device } from "@/styles/BreakPoints";
 
 export const Wrapper = styled.section`
   display: flex;
@@ -35,7 +35,6 @@ export const ButtonsWrapper = styled.div`
 export const GenresWrapper = styled.div`
   display: flex;
   align-items: center;
-  gap: 10px;
   width: 100%;
   min-height: 116px;
   gap: 20px;

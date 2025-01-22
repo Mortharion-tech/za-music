@@ -7,13 +7,13 @@ import { ButtonText } from "@/components/ui/Typography";
 import { PlayerDispatchContext } from "@/context/playerContext";
 import { actions } from "@/context/actions";
 import { useWindowSize } from "@/hooks/useWindowSize";
-import { breakpoints } from "@/styles/Breakpoints";
+import { breakpoints } from "@/styles/BreakPoints";
 import { PlayButton, TextWrapper, Wrapper, HeroText, HeroImage, HeroTitleText } from "./styled";
 
 function Hero({ tracks }) {
   const { width } = useWindowSize();
-
   const dispatch = useContext(PlayerDispatchContext);
+
   const handlePlayClick = () => {
     console.log(tracks);
     dispatch({

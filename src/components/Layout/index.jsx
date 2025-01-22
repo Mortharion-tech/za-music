@@ -2,7 +2,7 @@ import { Outlet } from "react-router-dom";
 import styled from "styled-components";
 import Header from "../Header";
 import Player from "../Player";
-import { device } from "@/styles/Breakpoints";
+import { device } from "@/styles/BreakPoints";
 
 export const ContentWrapper = styled.div`
   max-width: 1920px;

@@ -1,11 +1,15 @@
-import React, { useEffect, useState, useRef } from "react";
+import { useEffect, useState, useRef } from "react";
 import { Link } from "react-router-dom";
-import { useWindowSize } from "@/hooks/useWindowSize";
-import Skeleton from "react-loading-skeleton";
 import { toast } from "react-toastify";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Skeleton from "react-loading-skeleton";
 import { Pagination } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { loadGenres } from "@/services/api";
+import { ArrowLeft, ArrowRight } from "@/components/ui/Icons";
 import { SectionSubtitle } from "@/components/ui/Typography";
+import { breakpoints } from "@/styles/BreakPoints";
+import { useWindowSize } from "@/hooks/useWindowSize";
+import GenreCard from "./GenreCard";
 import {
   Wrapper,
   TitleRow,
@@ -14,10 +18,6 @@ import {
   GenresWrapper,
   GenreSkeletonWrapper,
 } from "./styled";
-import { ArrowLeft, ArrowRight } from "@/components/ui/Icons";
-import GenreCard from "./GenreCard";
-import { loadGenres } from "@/services/api";
-import { breakpoints } from "@/styles/Breakpoints";
 
 function Genres() {
   const { width } = useWindowSize();
