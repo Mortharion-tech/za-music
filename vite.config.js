@@ -30,6 +30,12 @@ export default defineConfig({
         secure: false,
         rewrite: (path) => path.replace(/^\/radio/, "/radio"),
       },
+      "/search": {
+        // Added search endpoint
+        target: "https://api.deezer.com",
+        changeOrigin: true,
+        rewrite: (path) => path.replace(/^\/search/, "/search"),
+      },
     },
   },
   resolve: {
