@@ -24,11 +24,11 @@ export const Wrapper = styled.div`
     background-size: cover;
     background-position: center center;
     border-radius: 25px;
+  }
 
-    ${device.md} {
-      width: 137px;
-      height: 95px;
-    }
+  ${device.md} {
+    width: 137px;
+    height: 95px;
   }
 `;
 
