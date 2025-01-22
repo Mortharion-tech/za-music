@@ -15,7 +15,6 @@ function Hero({ tracks }) {
   const dispatch = useContext(PlayerDispatchContext);
 
   const handlePlayClick = () => {
-    console.log(tracks);
     dispatch({
       type: actions.SET_TRACKS_DATA,
       track: tracks[0],
