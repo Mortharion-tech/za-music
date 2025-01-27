@@ -58,6 +58,7 @@ export async function loadGenre(genreId) {
 
     const radios = radiosData.data.data;
     const randomIndex = Math.floor(Math.random() * radios.length);
+
     const tracksData = await axios(radios[randomIndex].tracklist.replace(API_BASE_URL, ""));
 
     return {
